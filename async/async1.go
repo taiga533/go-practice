@@ -17,7 +17,7 @@ kawasaki
 と表示される
 */
 func main() {
-	sayHello()
+	go sayHello()
 	fmt.Println("kawasaki")
 	time.Sleep(2 * time.Second)
 }
