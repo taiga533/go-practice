@@ -1,0 +1,8 @@
+{
+    "extensions": {
+        "recommendations": [
+            "visualstudioexptteam.vscodeintellicode",
+            "ms-vscode.go",
+        ],
+    }
+}
