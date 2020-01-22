@@ -6,8 +6,10 @@ import (
 )
 
 func main() {
+	// waitGroup構造体のポインタ型
 	waitGroup := &sync.WaitGroup{}
 
+	// goroutineが実行されるときにWaitGroupのカウントを1増やす
 	waitGroup.Add(1)
 	go balthasar(waitGroup)
 	waitGroup.Add(1)
@@ -15,6 +17,7 @@ func main() {
 	waitGroup.Add(1)
 	go merchior(waitGroup)
 
+	// waitGroup内のカウントが0になるまで待つ
 	waitGroup.Wait()
 	fmt.Println("マギシステム終了")
 
