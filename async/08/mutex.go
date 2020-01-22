@@ -1,20 +1,37 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+	"time"
+)
 
-import "fmt"
+type item struct {
+	value string
+	mutex *sync.Mutex
+}
 
+// 1度そのまま実行したら、コメントアウトを外して再度実行してみよう！
 func main() {
-	// mutex := &sync.Mutex{}
-	wg := &sync.WaitGroup{}
-	for i := 0; i < 5; i++ {
-		// mutex.Lock()
-		wg.Add(1)
-		go func(i int) {
-			fmt.Printf("%v番目に作られたGoルーチン", i)
-			// mutex.Unlock()
-			wg.Done()
-		}(i)
+	sampleItem := &item{
+		value: "",
+		mutex: &sync.Mutex{},
 	}
-	wg.Wait()
+	messages := []string{
+		"hello",
+		"world",
+		"kawasaki",
+		"taiga",
+	}
+	for _, message := range messages {
+		// sampleItem.mutex.Lock()
+		go sampleItem.update(message)
+	}
+	time.Sleep(3 * time.Second)
+}
+
+func (i *item) update(value string) {
+	i.value = value
+	fmt.Printf("itemの値は%vに更新されました。\n", i.value)
+	// i.mutex.Unlock()
 }
