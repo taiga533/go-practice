@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 /*
-# 課題2
-channelを使って非同期処理の完了を待ってみよう！
+# 課題3
+channelの挿入時に起こるブロッキングを体感しよう
 
 # 条件
 messagesチャンネルから取り出した「さようなら」を使う
