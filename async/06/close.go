@@ -10,6 +10,7 @@ func main() {
 		for i := 0; i < 5; i++ {
 			messages <- "処理中"
 		}
+		close(messages)
 	}()
 	// 無限ループ
 	for {
